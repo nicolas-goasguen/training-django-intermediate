@@ -6,7 +6,7 @@ class BandAdmin(admin.ModelAdmin):
     list_display = ('name', 'year_formed', 'genre') # displayed fields list
 
 class ListingAdmin(admin.ModelAdmin):
-    list_display = ('title', 'type', 'year', 'sold') # displayed fields list
+    list_display = ('title', 'band', 'type', 'year', 'sold') # displayed fields list
 
 admin.site.register(Band, BandAdmin)
 admin.site.register(Listing, ListingAdmin)

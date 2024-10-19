@@ -27,6 +27,7 @@ class Listing(models.Model):
         POSTERS = 'P'
         MISCELLANEOUS = 'M'
 
+    band = models.ForeignKey(Band, null=True, on_delete=models.SET_NULL)
     title = models.fields.CharField(max_length=100)
     descriptions = models.fields.CharField(max_length=100)
     sold = models.fields.BooleanField(default=False)
