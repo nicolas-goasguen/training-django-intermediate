@@ -1,12 +1,8 @@
-from email.policy import default
-from random import choices
-
-from django.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator
+from django.db import models
 
 
 class Band(models.Model):
-
     class Genre(models.TextChoices):
         HIP_HOP = 'HH'
         SYNTH_POP = 'SP'
@@ -20,8 +16,11 @@ class Band(models.Model):
     active = models.fields.BooleanField(default=True)
     official_homepage = models.fields.URLField(null=True, blank=True)
 
-class Listing(models.Model):
+    def __str__(self):
+        return f'{self.name}'
 
+
+class Listing(models.Model):
     class Type(models.TextChoices):
         RECORDS = 'R'
         CLOTHING = 'C'
