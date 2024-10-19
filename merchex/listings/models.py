@@ -15,7 +15,6 @@ class Band(models.Model):
         validators=[MinValueValidator(1900), MaxValueValidator(2024)])
     active = models.fields.BooleanField(default=True)
     official_homepage = models.fields.URLField(null=True, blank=True)
-    like_new = models.fields.BooleanField(default=False)
 
     def __str__(self):
         return f'{self.name}'
