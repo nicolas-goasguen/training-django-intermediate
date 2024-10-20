@@ -23,6 +23,7 @@
 </ul>
 
 <a href="{% url 'band-update' band.id %}">Modifier le groupe</a>
+<a href="{% url 'band-delete' band.id %}">Supprimer le groupe</a>
 <a href="{% url 'band-list' %}">Retourner à la liste des groupes</a>
 
 {% endblock %}
