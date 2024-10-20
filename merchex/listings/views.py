@@ -2,7 +2,7 @@ from django.core.mail import send_mail
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
 
-from listings.forms import ContactUsForm
+from listings.forms import BandForm, ContactUsForm
 from listings.models import Band, Listing
 
 
@@ -13,6 +13,10 @@ def band_list(request):
 def band_detail(request, band_id):
     band = Band.objects.get(id=band_id)
     return render(request, 'listings/band_detail.html', {'band': band})
+
+def band_create(request):
+    form = BandForm()
+    return render(request, 'listings/band_create.html', {'form': form})
 
 def listing_list(request):
     listings_ = Listing.objects.all()
