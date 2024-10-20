@@ -11,9 +11,13 @@ def band_detail(request, band_id):
     band = Band.objects.get(id=band_id)
     return render(request, 'listings/band_detail.html', {'band': band})
 
-def listings(request):
+def listing_list(request):
     listings_ = Listing.objects.all()
-    return render(request, 'listings/listings.html', {'listings': listings_})
+    return render(request, 'listings/listing_list.html', {'listings': listings_})
+
+def listing_detail(request, listing_id):
+    listing = Listing.objects.get(id=listing_id)
+    return render(request, 'listings/listing_detail.html', {'listing': listing})
 
 def about(request):
     return render(request, 'listings/about.html')

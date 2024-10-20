@@ -2,13 +2,13 @@
 
 {% block content %}
 
-<h1>Listings</h1>
+<h1>Annonces</h1>
 <p>
   {% if listings|length > 0 %}
-    Voici {{ listings|length }} exemple(s) d'annonces :
+    {{ listings|length }} annonce(s) disponible(s) :
     <ul>
     {% for listing in listings %}
-      <li>{{ listing.title|upper }}</li>
+      <li><a href="{% url 'listing-detail' listing.id %}">{{ listing.title|upper }}</a></li>
     {% endfor %}
     </ul>
   {% else %}
