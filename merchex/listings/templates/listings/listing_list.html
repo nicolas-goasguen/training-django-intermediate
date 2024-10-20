@@ -3,6 +3,9 @@
 {% block content %}
 
 <h1>Annonces</h1>
+
+<a href="{% url 'listing-create' %}">Créer une nouvelle annonce</a>
+
 <p>
   {% if listings|length > 0 %}
     {{ listings|length }} annonce(s) disponible(s) :
