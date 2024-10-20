@@ -11,7 +11,10 @@
     {{ listings|length }} annonce(s) disponible(s) :
     <ul>
     {% for listing in listings %}
-      <li><a href="{% url 'listing-detail' listing.id %}">{{ listing.title|upper }}</a></li>
+      <li>
+        <a href="{% url 'listing-detail' listing.id %}">{{ listing.title|upper }}</a>
+        - <a href="{% url 'listing-update' listing.id %}">[modifier]</a>
+      </li>
     {% endfor %}
     </ul>
   {% else %}
