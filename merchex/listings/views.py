@@ -15,8 +15,14 @@ def band_detail(request, band_id):
     return render(request, 'listings/band_detail.html', {'band': band})
 
 def band_create(request):
-    form = BandForm()
-    return render(request, 'listings/band_create.html', {'form': form})
+    if request.method == 'POST':
+        band_form = BandForm(request.POST)
+        if band_form.is_valid():
+            band = band_form.save()
+            return redirect('band-detail', band.id)
+    else:
+        band_form = BandForm()
+    return render(request, 'listings/band_create.html', {'form': band_form})
 
 def listing_list(request):
     listings_ = Listing.objects.all()
