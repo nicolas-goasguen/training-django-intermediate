@@ -48,8 +48,8 @@ def listing_create(request):
     if request.method == 'POST':
         listing_form = ListingForm(request.POST)
         if listing_form.is_valid():
-            band = listing_form.save()
-            return redirect('listing-detail', band.id)
+            listing = listing_form.save()
+            return redirect('listing-detail', listing.id)
     else:
         listing_form = ListingForm()
     return render(request, 'listings/listing_create.html', {'form': listing_form})
