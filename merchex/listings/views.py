@@ -1,6 +1,6 @@
 from django.core.mail import send_mail
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 
 from listings.forms import ContactUsForm
 from listings.models import Band, Listing
@@ -37,6 +37,10 @@ def contact(request):
                 from_email=contact_form.cleaned_data['email'],
                 recipient_list=['alias.goasguen@icloud.com'],
             )
+            return redirect('email-sent')
     else:
         contact_form = ContactUsForm()
     return render(request, 'listings/contact.html', {'form': contact_form})
+
+def email_sent(request):
+    return render(request, 'listings/email_sent.html')
