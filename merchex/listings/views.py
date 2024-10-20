@@ -24,6 +24,17 @@ def band_create(request):
         band_form = BandForm()
     return render(request, 'listings/band_create.html', {'form': band_form})
 
+def band_update(request, band_id):
+    band = Band.objects.get(id=band_id)
+    if request.method == 'POST':
+        band_form = BandForm(request.POST, instance=band) # instance is mandatory
+        if band_form.is_valid():
+            band_form.save()
+            return redirect('band-detail', band.id)
+    else:
+        band_form = BandForm(instance=band)
+    return render(request, 'listings/band_update.html', {'form': band_form})
+
 def listing_list(request):
     listings_ = Listing.objects.all()
     return render(request, 'listings/listing_list.html',
